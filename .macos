@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Close open System Preferences panes, to prevent them from overriding settings.
+osascript -e 'tell application "System Preferences" to quit'
+
+# Change minimize/maximize window effect
+defaults write com.apple.dock mineffect -string "genie"
+
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Remove the auto-hiding Dock delay
+defaults write com.apple.dock autohide-delay -float 0
+
+# Remove the animation when hiding/showing the Dock
+# defaults write com.apple.dock autohide-time-modifier -float 0
+
+defaults write com.apple.dock autohide -bool true       # Autohide dock.
+defaults write com.apple.dock tilesize -int 86          # Set dock icon size.
+defaults write com.apple.dock magnification -bool true  # Enable dock magnification.
+defaults write com.apple.dock largesize -int 128         # Set dock magnificated icon size.
+defaults write NSGlobalDomain AppleInterfaceStyle Dark  # Use dark menu bar and dock.
+defaults write com.apple.dock persistent-apps -array    # Delete all apps from dock.
+
+killall Dock
