@@ -32,3 +32,42 @@ defaults write NSGlobalDomain AppleInterfaceStyle Dark  # Use dark menu bar and 
 defaults write com.apple.dock persistent-apps -array    # Delete all apps from dock.
 
 killall Dock
+
+# set the "Click wallpaper to reveal desktop" setting to "Only in Stage Manager"
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
+
+killall WindowManager
+
+
+
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Show these items on the desktop:
+# External hard drives:
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+# Hard drives:
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+# Removable media:
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+# Connected servers:
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+
+# Set Desktop as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+# defaults write com.apple.finder NewWindowTarget -string "PfDe"
+# defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+defaults write com.apple.finder NewWindowTarget -string "PfLe"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+
+# Show icons for hard drives, servers, and removable media on the desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+# Afterwards restart the Finder:
+killall -HUP Finder
+
+# disable the warning before emptying the Trash
+# $ defaults write com.apple.Finder WarnOnEmptyTrash -bool false
